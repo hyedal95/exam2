@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>차량사고 접수 어플</title>
+    <link rel="stylesheet" href="style.css">
+</script>
+<script src="index.js"></script>
+</head>
+<body>
+    <h1>차량사고 접수 어플</h1>
+    <form>
+        <label for="driverName">운전자 이름:</label>
+        <input type="text" id="driverName" name="driverName" placeholder="예: 노도연"><br>
+
+        <label for="accidentType">사고 종류:</label>
+        <select id="accidentType" name="accidentType">
+            <option value="충돌">충돌</option>
+            <option value="주차 중 사고">주차 중 사고</option>
+            <option value="스크래치">스크래치</option>
+            <option value="민원">민원</option>
+            <option value="기타">기타</option>
+        </select><br>
+
+        <label for="accidentType">연락처:</label>
+        <input type="text" id="dirverNumber" name="dirverNumber" placeholder="예: 010-xxxx-xxxx"><br><br>
+
+        <label for="accidentType">사고 위치:</label>
+        <select id="accidentType" name="accidentType">
+            <option value="B1F">B1F</option>
+            <option value="B2F">B2F</option>
+            <option value="B3F">B3F</option>
+            <option value="P1">P1</option>
+            <option value="P2-1F">P2-1F</option>
+            <option value="P2-2F">P2-2F</option>
+            <option value="P2-3F">P2-3F</option>
+            <option value="P2-4F">P2-4F</option>
+            <option value="P3">P3</option>
+            <option value="P4">P4</option>
+        </select>
+        <label for="accidentLocation"></label>
+        <input type="text" id="accidentLocation" name="accidentLocation" placeholder="예: B1F, P2-2F, A5 등을 입력해주세요">
+
+        <label for="accidentType">사고 날짜:   <p><input type="date"></p></label>
+        <label for="accidentType">사고 사진:</label>
+        <form method="post" enctype="multipart/form-data">
+            <div class="button">
+                <label for="chooseFile">
+                    👉 CLICK HERE! 👈
+                </label>
+            </div>
+            <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+
+            <button type="button" id="submitButton">제출</button>
+        </form>
+    </form>
+
+    <script>
+        const express = require('express');
+        const bodyParser = require('body-parser');
+        const app = express();
+
+        app.use(bodyParser.json());
+        app.use(bodyParser.urlencoded({ extended: false }));
+
+        // MongoDB 또는 다른 데이터베이스에 연결할 수 있음
+
+        app.post('/submitAccidentReport', (req, res) => {
+            const driverName = req.body.driverName;
+            const accidentType = req.body.accidentType;
+            // 나머지 입력 값도 가져와서 데이터베이스에 저장
+
+            // 데이터베이스에 저장하는 코드
+
+            res.status(200).json({ message: '사고 보고가 성공적으로 제출되었습니다.' });
+        });
+
+        const PORT = process.env.PORT || 3000;
+        app.listen(PORT, () => {
+            console.log(`서버가 포트 ${PORT}에서 실행 중입니다.`);
+});
+
+
+  
+
+    </script>
+    <script src="index.js"></script>
+</body>
+</html>
